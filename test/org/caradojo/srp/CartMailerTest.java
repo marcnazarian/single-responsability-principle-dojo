@@ -14,20 +14,20 @@ import org.caradojo.srp.RealProduct;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
-public class MailCartTest {
+public class CartMailerTest {
 
 	@Test
 	public void computeEmailContent() {
-		CartMailer mailCart = new CartMailer();
+		CartMailer cartMailer = new CartMailer();
 
 		Cart cart = mock(Cart.class);
 		Product product1 = new RealProduct("product 1", 2.45f);
 		Product product2 = new RealProduct("product 2", 10f);
 		
-		doCallRealMethod().when(cart).accept(mailCart);
+		doCallRealMethod().when(cart).accept(cartMailer);
 		when(cart.getProducts()).thenReturn(Arrays.asList(product1, product2));
 		
-		String computeMailContent = mailCart.computeMailContent(cart);
+		String computeMailContent = cartMailer.computeMailContent(cart);
 		assertThat(computeMailContent, Matchers.containsString("product 1 au prix de 2.45"));
 		assertThat(computeMailContent, Matchers.containsString("product 2 au prix de 10"));
 	}
