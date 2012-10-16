@@ -1,4 +1,4 @@
-package cara;
+package org.caradojo.srp;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,13 +13,13 @@ public class Cart implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private List<Product> products = new ArrayList<Product>();
-	
+
 	private Client client;
-	
+
 	private boolean hasPaid = false;
 
 	private final Date creationDate;
-	
+
 	public Cart(Client client, Date creationDate) {
 		this.client = client;
 		this.creationDate = creationDate;
@@ -28,7 +28,7 @@ public class Cart implements Serializable {
 	public void addProduct(Product prod) {
 		products.add(prod);
 	}
-	
+
 	public void removeProduct(Product prod) {
 		products.remove(prod);
 	}
@@ -36,7 +36,7 @@ public class Cart implements Serializable {
 	public List<Product> getProducts() {
 		return products;
 	}
-	
+
 	public List<String> getProductsNames() {
 		List<String> names = new ArrayList<String>();
 		for (Product product : products) {
@@ -44,7 +44,7 @@ public class Cart implements Serializable {
 		}
 		return names;
 	}
-	
+
 	public float totalPrice() {
 		int total = 0;
 		for (Product product : products) {
@@ -52,7 +52,7 @@ public class Cart implements Serializable {
 		}
 		return total;
 	}
-	
+
 	public boolean validate() {
 		boolean ok = true;
 		if (client.isSolvent()) {
@@ -64,39 +64,17 @@ public class Cart implements Serializable {
 		}
 		return ok;
 	}
-	
+
 	public void save() throws IOException {
 		ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream("cart.ser"));
 		stream.writeObject(this);
 	}
-	
-	public String computeMailContent() {
-		 String content = "Bonjour,\nVotre panier composé le " + creationDate
-		   + " comporte les éléments suivants :\n";
-		 for (Product product : products) {
-		  content += "- " + product.getName() + " au prix de "
-		    + product.getPrice() + "\n";
-		 }
-		 return content;
+
+	public void accept(CartVisitor v) {
+		v.visit(this);
+		for (Product product : getProducts()) {
+			product.accept(v);
 		}
-}
-
-public interface Client {
-
-	boolean isSolvent();
-
-	void pay(float totalPrice);
-
-}
-
-public interface Product {
-
-	float getPrice();
-
-	String getName();
-
-}
-
-public class Status {
-
+	}
+	
 }
