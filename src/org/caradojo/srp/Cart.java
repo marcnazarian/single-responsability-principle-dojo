@@ -70,10 +70,10 @@ public class Cart implements Serializable {
 		stream.writeObject(this);
 	}
 
-	public void accept(CartVisitor v) {
-		v.visit(this);
+	public void accept(CartVisitor cartVisitor) {
+		cartVisitor.visit(this);
 		for (Product product : getProducts()) {
-			product.accept(v);
+			product.accept(cartVisitor);
 		}
 	}
 	

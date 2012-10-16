@@ -6,8 +6,8 @@ public abstract class Product {
 
 	abstract String getName();
 	
-	void accept(CartVisitor v) {
-		v.visit(this);
+	void accept(CartVisitor cartVisitor) {
+		cartVisitor.visit(this);
 	}
 
 }
