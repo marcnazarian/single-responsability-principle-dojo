@@ -8,7 +8,7 @@ import static org.mockito.Mockito.when;
 import java.util.Arrays;
 
 import org.caradojo.srp.Cart;
-import org.caradojo.srp.MailCart;
+import org.caradojo.srp.CartMailer;
 import org.caradojo.srp.Product;
 import org.caradojo.srp.RealProduct;
 import org.hamcrest.Matchers;
@@ -18,19 +18,11 @@ public class MailCartTest {
 
 	@Test
 	public void computeEmailContent() {
-		MailCart mailCart = new MailCart();
+		CartMailer mailCart = new CartMailer();
 
 		Cart cart = mock(Cart.class);
 		Product product1 = new RealProduct("product 1", 2.45f);
 		Product product2 = new RealProduct("product 2", 10f);
-		
-//		Product product1 = mock(Product.class);
-//		when(product1.getName()).thenReturn("product 1");
-//		when(product1.getPrice()).thenReturn(2.45f);
-//		Product product2 = mock(Product.class);
-//		when(product2.getName()).thenReturn("product 1");
-//		when(product2.getPrice()).thenReturn(2.45f);
-		
 		
 		doCallRealMethod().when(cart).accept(mailCart);
 		when(cart.getProducts()).thenReturn(Arrays.asList(product1, product2));

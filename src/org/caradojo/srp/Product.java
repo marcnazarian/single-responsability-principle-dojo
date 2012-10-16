@@ -1,4 +1,5 @@
 package org.caradojo.srp;
+
 public abstract class Product {
 
 	abstract float getPrice();

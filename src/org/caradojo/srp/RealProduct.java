@@ -2,8 +2,8 @@ package org.caradojo.srp;
 
 public class RealProduct extends Product {
 
-	String name;
-	float price;
+	private String name;
+	private float price;
 	
 	public RealProduct(String name, float price) {
 		super();
