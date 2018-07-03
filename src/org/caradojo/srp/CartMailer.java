@@ -12,7 +12,7 @@ public class CartMailer implements CartVisitor {
 	@Override
 	public void visit(Cart cart) {
 		content.append("Bonjour,\n" + 
-					"Votre panier composé le creationDate " + 
+					"Votre panier composé le " + cart.getReadableCreationDate() +
 				    " comporte les éléments suivants :\n");
 	}
 

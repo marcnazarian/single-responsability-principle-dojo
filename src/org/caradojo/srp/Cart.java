@@ -4,6 +4,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -76,5 +78,12 @@ public class Cart implements Serializable {
 			product.accept(cartVisitor);
 		}
 	}
-	
+
+	Date getCreationDate() {
+		return creationDate;
+	}
+
+	public String getReadableCreationDate() {
+		return new SimpleDateFormat("dd-MM-yyyy").format(getCreationDate());
+	}
 }
