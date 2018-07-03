@@ -6,7 +6,7 @@ public class CartMailer implements CartVisitor {
 
 	public String computeMailContent(Cart cart) {
 		cart.accept(this);
-		return getMailContent();
+		return content.toString();
 	}
 	
 	@Override
@@ -20,10 +20,6 @@ public class CartMailer implements CartVisitor {
 	public void visit(Product product) {
 		content.append("- " + product.getName() + " au prix de "
 				+ product.getPrice() + "\n");
-	}
-
-	public String getMailContent() {
-		return content.toString();
 	}
 	
 }
