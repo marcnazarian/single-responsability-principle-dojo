@@ -1,18 +1,12 @@
 package org.caradojo.srp;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.mockito.Mockito.doCallRealMethod;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import org.hamcrest.Matchers;
+import org.junit.Test;
 
 import java.util.Arrays;
 
-import org.caradojo.srp.Cart;
-import org.caradojo.srp.CartMailer;
-import org.caradojo.srp.Product;
-import org.caradojo.srp.RealProduct;
-import org.hamcrest.Matchers;
-import org.junit.Test;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.*;
 
 public class CartMailerTest {
 

@@ -1,17 +1,14 @@
 package org.caradojo.srp;
 
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.Date;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.emptyCollectionOf;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.mock;
-
-import java.util.Date;
-
-import org.caradojo.srp.Cart;
-import org.caradojo.srp.Client;
-import org.caradojo.srp.Product;
-import org.junit.Before;
-import org.junit.Test;
 
 public class CartTest {
 

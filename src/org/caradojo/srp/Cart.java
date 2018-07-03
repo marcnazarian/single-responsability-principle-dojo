@@ -12,7 +12,7 @@ public class Cart implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private List<Product> products = new ArrayList<Product>();
+	private List<Product> products = new ArrayList<>();
 
 	private Client client;
 
